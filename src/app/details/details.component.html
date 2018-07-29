@@ -1,0 +1,121 @@
+<div class="container">
+
+    <div class="row" *ngIf="books">
+      <div class="col-md-3">
+          <div class="card">
+          
+              <img class="card-img-top img img-responsive" src="assets/images/books.png" alt="Card image">
+                    
+              <div class="card-body">
+                <h3 class="card-title">
+                 {{fullDetails.name}}
+                  
+      </h3>
+               
+               <!-- <a [routerLink]="['/details',blog.url]"class="btn btn-primary" style="width: 100%">See Profile</a>
+               -->
+              </div>
+            </div>
+      </div>
+      <div class="col-md-4">
+         
+          <div><label>Author : </label>{{fullDetails.authors}}</div>
+          <div><label>Country : </label>{{fullDetails.country}}</div>
+          <div><label>ISBN : </label>{{fullDetails.isbn}}</div>
+          <div><label>Media Type : </label>{{fullDetails.mediaType}}</div>
+         
+          
+      </div>
+
+      <div class="col-md-4">
+          <div><label>Number Of Pages : </label>{{fullDetails.numberOfPages}}</div>
+          
+          <div><label>Publisher : </label>{{fullDetails.publisher}}</div>
+          
+          <div><label>Released Date : </label>{{fullDetails.released | date}}</div>
+          
+          
+      </div>
+      </div>
+
+      <div class="col-md-12">
+          <h2>Few Charactors</h2>
+        </div>
+        <div class="row">
+           <div *ngFor="let booksCharactor of bookCharators" class="col-md-4">
+             <div class="card">
+               <div *ngIf="booksCharactor.url.includes('/books/')">
+               <img class="card-img-top img img-responsive" src="assets/images/books.png" alt="Card image">
+               </div>
+               <div *ngIf="booksCharactor.url.includes('/characters/')">
+       
+                 <div *ngIf="booksCharactor.gender=='Male'">
+                     <img class="card-img-top img img-responsive" src="assets/images/malee.jpeg" alt="Card image">
+                     </div>
+                      <div *ngIf="booksCharactor.gender=='Female'">
+                   <img class="card-img-top img img-responsive" src="assets/images/female1.jpeg" alt="Card image">
+       
+                        </div> 
+               </div>
+                 <div *ngIf="booksCharactor.url.includes('/houses/')">
+                   <img class="card-img-top img img-responsive" src="assets/images/houses.png" alt="Card image">
+                   </div>
+                     
+               <div class="card-body">
+                 <h6 class="card-title">
+                   <div *ngIf="booksCharactor.name==''">
+                   {{ booksCharactor.aliases}}
+                 </div>
+                 <div *ngIf="booksCharactor.name!=''">
+                     {{ booksCharactor.name}}
+                   </div>
+                   
+       </h6>
+                
+                 <a [routerLink]="['/details',booksCharactor.url]"class="btn btn-primary" style="width: 100%">See Profile</a>
+               </div>
+             </div>
+           </div>
+         </div>
+ 
+         <div class="col-md-12">
+             <h2>Few POV Charactors</h2>
+           </div>
+           <div class="row">
+              <div *ngFor="let booksPovCharactor of bookPovCharators" class="col-md-4">
+                <div class="card">
+                  <div *ngIf="booksPovCharactor.url.includes('/books/')">
+                  <img class="card-img-top img img-responsive" src="assets/images/books.png" alt="Card image">
+                  </div>
+                  <div *ngIf="booksPovCharactor.url.includes('/characters/')">
+          
+                    <div *ngIf="booksPovCharactor.gender=='Male'">
+                        <img class="card-img-top img img-responsive" src="assets/images/malee.jpeg" alt="Card image">
+                        </div>
+                         <div *ngIf="booksPovCharactor.gender=='Female'">
+                      <img class="card-img-top img img-responsive" src="assets/images/female1.jpeg" alt="Card image">
+          
+                           </div> 
+                  </div>
+                    <div *ngIf="booksPovCharactor.url.includes('/houses/')">
+                      <img class="card-img-top img img-responsive" src="assets/images/houses.png" alt="Card image">
+                      </div>
+                        
+                  <div class="card-body">
+                    <h6 class="card-title">
+                      <div *ngIf="booksPovCharactor.name==''">
+                      {{ booksPovCharactor.aliases}}
+                    </div>
+                    <div *ngIf="booksPovCharactor.name!=''">
+                        {{ booksPovCharactor.name}}
+                      </div>
+                      
+          </h6>
+                   
+                    <a [routerLink]="['/details',booksPovCharactor.url]"class="btn btn-primary" style="width: 100%">See Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>     
+  
+  </div>

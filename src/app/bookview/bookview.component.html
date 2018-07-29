@@ -1,0 +1,133 @@
+<div *ngIf="loading" class="loader">
+  <app-atom-spinner [animationDuration]="1000" [size]="300" [color]="'#1D58BF'">
+
+  </app-atom-spinner>
+</div>
+<div class="container">
+
+  <div class="row" *ngIf="books">
+    <div class="col-md-3">
+      <div class="card">
+        <p class="btn btn-info newfont">{{fullDetails.name}}</p>
+        <img class="card-img-top img img-responsive" src="assets/images/books.png" alt="Card image">
+
+        <div class="card-body">
+
+
+
+
+
+
+          <!-- <a [routerLink]="['/details',blog.url]"class="btn btn-primary" style="width: 100%">See Profile</a>
+               -->
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 newfont">
+
+      <div>
+        <label class="bg">Author : </label>{{fullDetails.authors}}</div>
+      <div>
+        <label class="bg">Country : </label>{{fullDetails.country}}</div>
+      <div>
+        <label class="bg">ISBN : </label>{{fullDetails.isbn}}</div>
+      <div>
+        <label class="bg">Media Type : </label>{{fullDetails.mediaType}}</div>
+
+
+    </div>
+
+    <div class="col-md-4">
+      <div>
+        <label class="bg">Number Of Pages : </label>{{fullDetails.numberOfPages}}</div>
+
+      <div>
+        <label class="bg">Publisher : </label>{{fullDetails.publisher}}</div>
+
+      <div>
+        <label class="bg">Released Date : </label>{{fullDetails.released | date}}</div>
+
+
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div *ngFor="let booksCharactor of bookCharators" class="col-md-4">
+      <div class="card">
+        <p class="btn btn-success">Charactors</p>
+        <div *ngIf="booksCharactor.url.includes('/books/')">
+          <img class="card-img-top img img-responsive" src="assets/images/books.png" alt="Card image">
+        </div>
+        <div *ngIf="booksCharactor.url.includes('/characters/')">
+
+          <div *ngIf="booksCharactor.gender=='Male'">
+            <img class="card-img-top img img-responsive" src="assets/images/malee.jpeg" alt="Card image">
+          </div>
+          <div *ngIf="booksCharactor.gender=='Female'">
+            <img class="card-img-top img img-responsive" src="assets/images/female1.jpeg" alt="Card image">
+
+          </div>
+        </div>
+        <div *ngIf="booksCharactor.url.includes('/houses/')">
+          <img class="card-img-top img img-responsive" src="assets/images/houses.png" alt="Card image">
+        </div>
+
+        <div class="card-body">
+          <h6 class="card-title">
+            <div *ngIf="booksCharactor.name==''">
+              {{ booksCharactor.aliases}}
+            </div>
+            <div *ngIf="booksCharactor.name!=''">
+              {{ booksCharactor.name}}
+            </div>
+
+          </h6>
+
+          <a [routerLink]="['/charactor',booksCharactor.url]" class="btn btn-primary" style="width: 100%">See Profile</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div *ngFor="let booksPovCharactor of bookPovCharators" class="col-md-4">
+      <div class="card">
+        <p class="btn btn-success">Pov Charactor</p>
+        <div *ngIf="booksPovCharactor.url.includes('/books/')">
+          <img class="card-img-top img img-responsive" src="assets/images/books.png" alt="Card image">
+        </div>
+        <div *ngIf="booksPovCharactor.url.includes('/characters/')">
+
+          <div *ngIf="booksPovCharactor.gender=='Male'">
+            <img class="card-img-top img img-responsive" src="assets/images/malee.jpeg" alt="Card image">
+          </div>
+          <div *ngIf="booksPovCharactor.gender=='Female'">
+            <img class="card-img-top img img-responsive" src="assets/images/female1.jpeg" alt="Card image">
+
+          </div>
+        </div>
+        <div *ngIf="booksPovCharactor.url.includes('/houses/')">
+          <img class="card-img-top img img-responsive" src="assets/images/houses.png" alt="Card image">
+        </div>
+
+        <div class="card-body">
+          <h6 class="card-title">
+            <div *ngIf="booksPovCharactor.name==''">
+              {{ booksPovCharactor.aliases}}
+            </div>
+            <div *ngIf="booksPovCharactor.name!=''">
+              {{ booksPovCharactor.name}}
+            </div>
+
+          </h6>
+
+          <a [routerLink]="['/charactor',booksPovCharactor.url]" class="btn btn-primary" style="width: 100%">See Profile</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="btn btn-success" (click)="backClicked()">Back</button>
+
+</div>

@@ -1,0 +1,225 @@
+<div *ngIf="loading" class="loader">
+  <app-atom-spinner [animationDuration]="1000" [size]="300" [color]="'#1D58BF'">
+
+  </app-atom-spinner>
+</div>
+
+<div class="container">
+
+  <div class="row" *ngIf="houseDetails">
+    <div class="col-md-3">
+      <div class="card">
+
+
+        <img class="card-img-top img img-responsive" src="assets/images/houses.png" alt="Card image">
+
+
+
+        <div class="card-body">
+          <h3 class="card-title newfont">
+
+
+
+            {{ houseDetails.name}}
+
+
+
+          </h3>
+
+          <!-- <a [routerLink]="['/details',blog.url]"class="btn btn-primary" style="width: 100%">See Profile</a>
+             -->
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9 newfont">
+      <div>
+        <label class="bg">Founded : </label>{{houseDetails.founded}}</div>
+      <div>
+        <label class="bg">Ancestral Weapons : </label>{{houseDetails.ancestralWeapons}}</div>
+
+      <div>
+        <label class="bg">Coat Of Arms : </label>{{houseDetails.coatOfArms}}</div>
+
+      <div>
+        <label class="bg">Region : </label>{{houseDetails.region}}</div>
+
+      <div>
+        <label class="bg">Seats : </label>{{houseDetails.seats}}</div>
+      <div>
+        <label class="bg">Titles : </label>{{houseDetails.titles}}</div>
+      <div>
+        <label class="bg">swornMembers Count : </label>{{houseDetails.swornMembers.length}}</div>
+
+
+
+
+
+    </div>
+
+
+  </div>
+
+
+  <div class="row">
+    <div *ngFor="let swornmember of swornMembers" class="col-md-3">
+      <div class="card">
+        <p class="btn btn-success">Sworn member</p>
+
+        <div *ngIf="swornmember.gender=='Male'">
+          <img class="card-img-top img img-responsive" src="assets/images/malee.jpeg" alt="Card image">
+        </div>
+        <div *ngIf="swornmember.gender=='Female'">
+          <img class="card-img-top img img-responsive" src="assets/images/female1.jpeg" alt="Card image">
+
+        </div>
+
+
+
+        <div class="card-body">
+          <h6 class="card-title">
+            <div *ngIf="swornmember.name==''">
+              {{ swornmember.aliases}}
+            </div>
+            <div *ngIf="swornmember.name!=''">
+              {{ swornmember.name}}
+            </div>
+
+          </h6>
+
+          <a [routerLink]="['/charactor',swornmember.url,swornmember.url]" class="btn btn-primary" style="width: 100%">See Profile</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3" *ngIf="cadetBranchesDetails[0]">
+      <div class="card">
+        <p class="btn btn-success">Cadet Branch</p>
+
+        <img class="card-img-top img img-responsive" src="assets/images/houses.png" alt="Card image">
+
+
+
+
+        <div class="card-body">
+          <h6 class="card-title">
+
+            {{ cadetBranchesDetails[0].name}}
+
+
+          </h6>
+
+          <a [routerLink]="['/house',cadetBranchesDetails[0].url,cadetBranchesDetails[0].url]" class="btn btn-primary" style="width: 100%">See Profile</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-3" *ngIf="currentLordDetails[0]">
+      <div class="card">
+        <p class="btn btn-success">Current Lord</p>
+
+        <div *ngIf="currentLordDetails[0].gender=='Male'">
+          <img class="card-img-top img img-responsive" src="assets/images/malee.jpeg" alt="Card image">
+        </div>
+        <div *ngIf="currentLordDetails[0].gender=='Female'">
+          <img class="card-img-top img img-responsive" src="assets/images/female1.jpeg" alt="Card image">
+
+        </div>
+
+
+
+        <div class="card-body">
+          <h6 class="card-title">
+            <div *ngIf="currentLordDetails[0].name==''">
+              {{ currentLordDetails[0].aliases}}
+            </div>
+            <div *ngIf="currentLordDetails[0].name!=''">
+              {{ currentLordDetails[0].name}}
+            </div>
+
+          </h6>
+
+          <a [routerLink]="['/charactor',currentLordDetails[0].url,currentLordDetails[0].url]" class="btn btn-primary" style="width: 100%">See Profile</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3" *ngIf="heirDetails[0]">
+      <div class="card">
+        <p class="btn btn-success">Current heir</p>
+
+        <div *ngIf="heirDetails[0].gender=='Male'">
+          <img class="card-img-top img img-responsive" src="assets/images/malee.jpeg" alt="Card image">
+        </div>
+        <div *ngIf="heirDetails[0].gender=='Female'">
+          <img class="card-img-top img img-responsive" src="assets/images/female1.jpeg" alt="Card image">
+
+        </div>
+
+
+
+        <div class="card-body">
+          <h6 class="card-title">
+            <div *ngIf="heirDetails[0].name==''">
+              {{ heirDetails[0].aliases}}
+            </div>
+            <div *ngIf="heirDetails[0].name!=''">
+              {{ heirDetails[0].name}}
+            </div>
+
+          </h6>
+
+          <a [routerLink]="['/charactor',heirDetails[0].url,heirDetails[0].url]" class="btn btn-primary" style="width: 100%">See Profile</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3" *ngIf="founderDetails[0]">
+      <div class="card">
+        <p class="btn btn-success">Founder</p>
+
+        <div *ngIf="founderDetails[0].gender=='Male'">
+          <img class="card-img-top img img-responsive" src="assets/images/malee.jpeg" alt="Card image">
+        </div>
+        <div *ngIf="founderDetails[0].gender=='Female'">
+          <img class="card-img-top img img-responsive" src="assets/images/female1.jpeg" alt="Card image">
+
+        </div>
+
+
+
+        <div class="card-body">
+          <h6 class="card-title">
+            <div *ngIf="founderDetails[0].name==''">
+              {{ founderDetails[0].aliases}}
+            </div>
+            <div *ngIf="founderDetails[0].name!=''">
+              {{ founderDetails[0].name}}
+            </div>
+
+          </h6>
+
+          <a [routerLink]="['/charactor',founderDetails[0].url,founderDetails[0].url]" class="btn btn-primary" style="width: 100%">See Profile</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3" *ngIf="overLordDetails[0]">
+      <div class="card">
+        <p class="btn btn-success">Over Lord</p>
+
+        <img class="card-img-top img img-responsive" src="assets/images/houses.png" alt="Card image">
+        <div class="card-body">
+          <h6 class="card-title">
+
+            {{ overLordDetails[0].name}}
+
+
+          </h6>
+
+          <a [routerLink]="['/house',overLordDetails[0].url,overLordDetails[0].url]" class="btn btn-primary" style="width: 100%">See Profile</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="button" class="btn btn-success" (click)="backClicked()">Back</button>
+
+</div>

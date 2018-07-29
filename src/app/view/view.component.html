@@ -1,0 +1,64 @@
+
+
+  <div *ngIf="loading" class="loader">
+  <app-atom-spinner
+    [animationDuration]="1000"
+    [size]="300"
+    [color]="'#1D58BF'">
+
+  </app-atom-spinner>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 form-group">
+        <input type="text" [(ngModel)]="term" class="form-control" placeholder="Search here ...">
+
+    </div>
+
+    <div *ngFor="let blog of gameOfThrones |filter:term" class="col-md-4">
+      <div class="card">
+        <div *ngIf="blog.url.includes('/books/')">
+        <img class="card-img-top img img-responsive" src="assets/images/books.png" alt="Card image">
+        </div>
+        <div *ngIf="blog.url.includes('/characters/')">
+
+          <div *ngIf="blog.gender=='Male'">
+              <img class="card-img-top img img-responsive" src="assets/images/malee.jpeg" alt="Card image">
+              </div>
+               <div *ngIf="blog.gender=='Female'">
+            <img class="card-img-top img img-responsive" src="assets/images/female1.jpeg" alt="Card image">
+
+                 </div> 
+        </div>
+          <div *ngIf="blog.url.includes('/houses/')">
+            <img class="card-img-top img img-responsive" src="assets/images/houses.png" alt="Card image">
+            </div>
+              
+        <div class="card-body">
+          <h6 class="card-title">
+            <div *ngIf="blog.name==''">
+            {{ blog.aliases}}
+          </div>
+          <div *ngIf="blog.name!=''">
+              {{ blog.name}}
+            </div>
+            
+</h6>
+        <div *ngIf="blog.url.includes('/books/')">
+          <a [routerLink]="['/book',blog.url]"class="btn btn-primary" style="width: 100%">See Profile</a>
+
+</div>
+<div *ngIf="blog.url.includes('/houses/')">
+  <a [routerLink]="['/house',blog.url]"class="btn btn-primary" style="width: 100%">See Profile</a>
+
+</div>
+<div *ngIf="blog.url.includes('/characters/')">
+  <a [routerLink]="['/charactor',blog.url]"class="btn btn-primary" style="width: 100%">See Profile</a>
+
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

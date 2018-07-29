@@ -1,0 +1,176 @@
+<div *ngIf="loading" class="loader">
+    <app-atom-spinner
+      [animationDuration]="1000"
+      [size]="300"
+      [color]="'#1D58BF'">
+  
+    </app-atom-spinner>
+</div>
+
+
+<div class="container">
+
+    <div class="row" *ngIf="characterDetails">
+      <div class="col-md-3">
+          <div class="card">
+          <div *ngIf="characterDetails.gender=='Male'">
+              <img class="card-img-top img img-responsive" src="assets/images/malee.jpeg" alt="Card image">
+
+          </div>
+          <div *ngIf="characterDetails.gender=='Female'">
+              <img class="card-img-top img img-responsive" src="assets/images/female1.jpeg" alt="Card image">
+
+            </div>
+            
+                    
+              <div class="card-body">
+                <h3 class="card-title newfont">
+
+                    <div *ngIf="characterDetails.name==''">
+                        {{ characterDetails.aliases}}
+                      </div>
+                      <div *ngIf="characterDetails.name!=''">
+                          {{ characterDetails.name}}
+                        </div>
+               
+                  
+      </h3>
+               
+               <!-- <a [routerLink]="['/details',blog.url]"class="btn btn-primary" style="width: 100%">See Profile</a>
+               -->
+              </div>
+            </div>
+      </div>
+      <div class="col-md-9 newfont" >
+         
+          <div><label class="bg"><b>Aliases :</b> </label>{{characterDetails.aliases}}</div>
+         
+          <div><label class="bg">Born : </label>{{characterDetails.born}}</div>
+         
+          <div><label class="bg">Culture : </label>{{characterDetails.culture}}</div>
+         
+          <div><label class="bg">Died : </label>{{characterDetails.died}}</div>
+          <div><label class="bg">Gender : </label>{{characterDetails.gender}}</div>
+          <div><label class="bg">Played By : </label>{{characterDetails.playedBy}}</div>
+          <div><label class="bg">Titles : </label>{{characterDetails.titles}}</div>
+          <div><label class="bg">TV Series : </label>{{characterDetails.tvSeries}}</div>
+          
+         
+         
+          
+      </div>
+
+      
+      </div>
+      
+      <div class="row">
+         <div *ngFor="let booksCharactor of motherDetails" class="col-md-3">
+           <div class="card">
+             <div *ngIf="booksCharactor.url.includes('/books/')">
+              <p class="btn btn-success">Parents</p>
+             <img class="card-img-top img img-responsive" src="assets/images/books.png" alt="Card image">
+             </div>
+             <div *ngIf="booksCharactor.url.includes('/characters/')">
+     
+               <div *ngIf="booksCharactor.gender=='Male'">
+                   <img class="card-img-top img img-responsive" src="assets/images/malee.jpeg" alt="Card image">
+                   </div>
+                    <div *ngIf="booksCharactor.gender=='Female'">
+                 <img class="card-img-top img img-responsive" src="assets/images/female1.jpeg" alt="Card image">
+     
+                      </div> 
+             </div>
+               <div *ngIf="booksCharactor.url.includes('/houses/')">
+                 <img class="card-img-top img img-responsive" src="assets/images/houses.png" alt="Card image">
+                 </div>
+                   
+             <div class="card-body">
+               <h6 class="card-title">
+                 <div *ngIf="booksCharactor.name==''">
+                 {{ booksCharactor.aliases}}
+               </div>
+               <div *ngIf="booksCharactor.name!=''">
+                   {{ booksCharactor.name}}
+                 </div>
+                 
+     </h6>
+              
+               <a [routerLink]="['/charactor',booksCharactor.url,booksCharactor.url]"class="btn btn-primary" style="width: 100%">See Profile</a>
+             </div>
+           </div>
+         </div>
+         <div *ngFor="let characterSpouse of spouseDetails" class="col-md-3">
+          <div class="card">
+        
+            <div *ngIf="characterSpouse.url.includes('/characters/')">
+              <p  class="btn btn-success">Spouse Details</p>
+              <div *ngIf="characterSpouse.gender=='Male'">
+                  <img class="card-img-top img img-responsive" src="assets/images/malee.jpeg" alt="Card image">
+                  </div>
+                   <div *ngIf="characterSpouse.gender=='Female'">
+                <img class="card-img-top img img-responsive" src="assets/images/female1.jpeg" alt="Card image">
+    
+                     </div> 
+            </div>
+            
+                  
+            <div class="card-body">
+              <h6 class="card-title">
+                <div *ngIf="characterSpouse.name==''">
+                {{ characterSpouse.aliases}}
+              </div>
+              <div *ngIf="characterSpouse.name!=''">
+                  {{ characterSpouse.name}}
+                </div>
+                
+    </h6>
+             
+              <a [routerLink]="['/charactor',characterSpouse.url,characterSpouse.url]"class="btn btn-primary" style="width: 100%">See Profile</a>
+            </div>
+          </div>
+        </div>
+       </div>
+       <div class="row">
+        <div *ngFor="let characterAllegiance of characterAllegiances" class="col-md-3">
+          <div class="card">
+              <p class="btn btn-success">Allegiances</p>
+          
+          
+            <img class="card-img-top img img-responsive" src="assets/images/houses.png" alt="Card image">
+           
+            <div class="card-body">
+              <h6 class="card-title">
+               
+                  {{ characterAllegiance.name}}
+                
+                
+    </h6>
+             
+              <a [routerLink]="['/house',characterAllegiance.url]"class="btn btn-primary" style="width: 100%">See Profile</a>
+            </div>
+          </div>
+        </div>
+        </div>
+       <div class="row">
+        <div *ngFor="let characterBook of characterBooks" class="col-md-3">
+          <div class="card">
+              <p class="btn btn-success">Character Books</p>
+          
+            <img class="card-img-top img img-responsive" src="assets/images/books.png" alt="Card image">
+           
+            <div class="card-body">
+              <h6 class="card-title">
+               
+                  {{ characterBook.name}}
+                
+                
+    </h6>
+             
+              <a [routerLink]="['/book',characterBook.url]"class="btn btn-primary" style="width: 100%">See Profile</a>
+            </div>
+          </div>
+        </div>
+        </div>
+        
+       <button type="button" class="btn btn-success" (click)="backClicked()">Back</button>
+  </div>

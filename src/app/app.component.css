@@ -1,0 +1,24 @@
+.homebutton{
+    position: absolute;
+    top:2px;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    text-decoration-color: white;
+    color:white;
+    font-size: 3rem;
+
+}
+
+.jumbotron{
+
+    background-image: url('image.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height:250px;
+      
+}
